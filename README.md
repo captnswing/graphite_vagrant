@@ -3,7 +3,7 @@
 ### Summary, what is this?
 
 * basically, a [Vagrantfile](http://vagrantup.com/v1/docs/vagrantfile.html) to install [graphite](http://graphite.wikidot.org) into a virtual linux box
-* the Vagrantfile uses a [chef cookbook](http://docs.opscode.com/essentials_cookbooks.html) for graphite that [I've written](https://github.com/captnswing/chef-graphite)
+* the Vagrantfile uses a [chef cookbook for graphite](https://github.com/captnswing/chef-graphite) that I've written
 
 This should anyone get up and running with a working graphite box in the matter of a few minutes. 
 
@@ -11,6 +11,7 @@ This should anyone get up and running with a working graphite box in the matter 
 
 ###### virtualbox
 
+    # on a Mac
     curl -O http://dlc.sun.com.edgesuite.net/virtualbox/4.2.6/VirtualBox-4.2.6-82870-OSX.dmg
     hdid VirtualBox-4.2.6-82870-OSX.dmg
     sudo installer -target '/' -pkg /Volumes/VirtualBox/VirtualBox.pkg
@@ -37,9 +38,7 @@ With the above installed and in place, you should be able to
     cd graphite_vagrant
     vagrant up
     
-This will run the [graphite cookbook](https://github.com/captnswing/chef-graphite) and install graphite and all of its requirements.
-
-On my Macbook Air, that takes around 7 min. YMMV.
+This will run the [graphite cookbook](https://github.com/captnswing/chef-graphite) and install graphite and all of its requirements. On my Macbook Air, that takes around 7 min. YMMV.
 
 Once the chef run completes, you can access graphite's web GUI through [localhost:8085](http://localhost:8085)
 
