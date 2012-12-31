@@ -2,7 +2,7 @@
 
 ### Summary, what is this?
 
-* basically, a [Vagrantfile](http://vagrantup.com/v1/docs/vagrantfile.html) to install [graphite](http://graphite.wikidot.org) into a virtual linux box
+* basically, a [Vagrantfile](http://vagrantup.com/v1/docs/vagrantfile.html) that installs [graphite](http://graphite.wikidot.org) on a virtual linux box
 * the Vagrantfile uses a [chef cookbook for graphite](https://github.com/captnswing/chef-graphite) that I've written
 
 This simple setup should get anyone up and running with a working graphite box within a few minutes.
@@ -38,7 +38,9 @@ With the above installed and in place, you should be able to
     cd graphite_vagrant
     vagrant up
     
-This will run the [graphite cookbook](https://github.com/captnswing/chef-graphite) and install graphite and all of its requirements. On my Macbook Air, that takes around 7 min. YMMV.
+This will run the [graphite cookbook](https://github.com/captnswing/chef-graphite) and install graphite and all of its requirements on the local vagrant box. On my Macbook Air, that takes around 7 min. YMMV.
+
+### And now what?
 
 Once the chef run completes, you can access graphite's web GUI through [localhost:8085](http://localhost:8085)
 
@@ -46,11 +48,11 @@ Once the chef run completes, you can access graphite's web GUI through [localhos
 
 You now have a fully functioning graphite system on a virtual vagrant machine. Start sending some data to carbon on port `2003`, e.g. straight from your Terminal:
 
-    # on a Mac - 'date' on a mac isn't the real thing 
+    # on a Mac - 'date' isn't quite so good
     export LC_ALL=C; epochseconds=`date -j -f "%a %b %d %T %Z %Y" "\`date\`" "+%s"`
     
     # on any other unix
-    export LC_ALL=C; epochseconds=`date +%s`
+    epochseconds=`date +%s`
     
     # and then...
     echo "my.awesome.data 999" $epochseconds | nc localhost 2003
@@ -63,4 +65,6 @@ we get
 
 ![graphite first data](https://bitbucket.org/captnswing/graphite_vagrant/raw/default/graphite_firstdata.png)
 
-Yay!
+Make sure to check out the [graphite docs](http://graphite.readthedocs.org/) for more.
+
+Happy graphing!
