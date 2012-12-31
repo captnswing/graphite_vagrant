@@ -5,7 +5,7 @@
 * basically, a [Vagrantfile](http://vagrantup.com/v1/docs/vagrantfile.html) to install [graphite](http://graphite.wikidot.org) into a virtual linux box
 * the Vagrantfile uses a [chef cookbook for graphite](https://github.com/captnswing/chef-graphite) that I've written
 
-This should anyone get up and running with a working graphite box in the matter of a few minutes. 
+This simple setup should get anyone up and running with a working graphite box within a few minutes.
 
 ### Prerequisites?
 
@@ -44,12 +44,12 @@ Once the chef run completes, you can access graphite's web GUI through [localhos
 
 ![graphite running](https://bitbucket.org/captnswing/graphite_vagrant/raw/default/graphite_running.png)
 
-You can now send data to carbon on port `2003` by many means, e.g. straight from your Terminal:
+You now have a fully functioning graphite system on a virtual vagrant machine. Start sending some data to carbon on port `2003`, e.g. straight from your Terminal:
 
     # on a Mac
-    echo "my.awesome.data 999" `date -j -f date -j -f "%Y/%m/%d %T" "2009/10/15 04:58:06" +"%s"` | nc localhost 2003
+    echo "my.awesome.data 999" `date -j -f date -j -f "%Y/%m/%d %T" "`date`" +"%s"` | nc localhost 2003
     
     # on any other unix
     echo "my.awesome.data 999" `date +%s` | nc localhost 2003
 
-Yeah!
+Yay!
