@@ -57,14 +57,16 @@ You now have a fully functioning graphite system on a virtual vagrant machine. S
     # and then...
     echo "my.awesome.data 999" $epochseconds | nc localhost 2003
 
-Since it's only one single data point, it's going to be hard to see in the default graphite view (try to spot a small blue dot in the lower right corner of the graph). With some fiddling, we can make the data point more visible. Using [this URL](http://localhost:8085/render/?width=600&target=lineWidth%28my.awesome.data%2C5%29&yMin=800&yMax=1200&areaMode=first):
+Since that is only one single data point, it's going to be hard to see in the default graphite view (try to spot a small blue dot in the lower right corner of the graph). 
+
+With some fiddling in the Graphite GUI, we can make that single data point more visible. Using [this URL](http://localhost:8085/render/?width=600&target=lineWidth%28my.awesome.data%2C5%29&yMin=800&yMax=1200&areaMode=first):
 
     http://localhost:8085/render/?width=600&target=lineWidth%28my.awesome.data%2C5%29&yMin=800&yMax=1200&areaMode=first
 
-we get
+we get:
 
 ![graphite first data](https://bitbucket.org/captnswing/graphite_vagrant/raw/default/graphite_firstdata.png)
 
-Make sure to check out the [graphite docs](http://graphite.readthedocs.org/) for more.
+Yay! Make sure to check out the [graphite docs](http://graphite.readthedocs.org/) for more.
 
 Happy graphing!
