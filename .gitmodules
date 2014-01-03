@@ -1,0 +1,6 @@
+[submodule "provisioning/chef/chef-graphite"]
+	path = provisioning/chef/chef-graphite
+	url = https://github.com/captnswing/chef-graphite
+[submodule "provisioning/chef/python"]
+	path = provisioning/chef/python
+	url = https://github.com/poise/python
