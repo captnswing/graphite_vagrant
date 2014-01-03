@@ -9,10 +9,12 @@ Vagrant.configure("2") do |config|
 
   config.vm.hostname = "graphite.example.com"
 
-  config.vm.network "private_network", ip: "192.168.33.100"
-
-  # use NFS for /vagrant folder, speed on built in folder sharing is very bad
-  config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  # carbon
+  config.vm.network "forwarded_port", guest: 2003, host: 2003
+  # graphite gui
+  config.vm.network "forwarded_port", guest: 8085, host: 8085
+  # statsd
+  #config.vm.network "forwarded_port", guest: 8125, host: 8125
 
   config.vm.provider "virtualbox" do |vbox|
     vbox.customize ["modifyvm", :id, "--name", "graphite"]

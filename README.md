@@ -9,36 +9,17 @@ This simple setup should get anyone up and running with a working graphite box w
 
 ### Prerequisites?
 
-###### virtualbox
-
-    # on a Mac
-    curl -O http://dlc.sun.com.edgesuite.net/virtualbox/4.2.6/VirtualBox-4.2.6-82870-OSX.dmg
-    hdid VirtualBox-4.2.6-82870-OSX.dmg
-    sudo installer -target '/' -pkg /Volumes/VirtualBox/VirtualBox.pkg
-    diskutil eject /Volumes/VirtualBox; rm VirtualBox-4.2.6-82870-OSX.dmg
-
-###### ruby 1.9.3
-
-    curl -L https://get.rvm.io | bash -s stable --ruby
-    rvm --default use 1.9.3
-
-###### vagrant & berkshelf
-
-    gem install vagrant berkshelf
-
-###### ubuntu 12.04 vagrant box
-
-    vagrant box add precise64 http://files.vagrantup.com/precise64.box
+You need [Virtualbox](https://www.virtualbox.org/) and [Vagrant](http://www.vagrantup.com/). On a Mac, use these steps to install: [https://gist.github.com/captnswing/8158880](https://gist.github.com/captnswing/8158880)
 
 ### How to use?
 
-With the above installed and in place, you should be able to
+With the above installed and in place, you should be able to simply:
 
     hg clone ssh://hg@bitbucket.org/captnswing/graphite_vagrant
     cd graphite_vagrant
     vagrant up
 
-This will run the [graphite cookbook](https://github.com/captnswing/chef-graphite) and install graphite and all of its requirements on the local vagrant box. On my Macbook Air, that takes around 7 min. YMMV.
+This will run the chef-solo provisioner with the [graphite cookbook](https://github.com/captnswing/chef-graphite) and install graphite and all of its requirements on the local vagrant box. On my 2013 Macbook Air, that takes around 4-5 min. YMMV.
 
 ### And now what?
 
@@ -48,10 +29,10 @@ Once the chef run completes, you can access graphite's web GUI through [localhos
 
 You now have a fully functioning graphite system on a virtual vagrant machine. Start sending some data to carbon on port `2003`, e.g. straight from your Terminal:
 
-    # on a Mac - 'date' isn't quite so good
+    # on a Mac < OS X 10.9 - 'date' isn't quite so good
     export LC_ALL=C; epochseconds=`date -j -f "%a %b %d %T %Z %Y" "\`date\`" "+%s"`
 
-    # on any other unix
+    # on Mac >= 10.9 and any other unix
     epochseconds=`date +%s`
 
     # and then...
