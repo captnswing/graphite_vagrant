@@ -1,0 +1,7 @@
+- hosts: develop-vm
+  user: vagrant
+  sudo: yes
+
+  roles:
+    - common
+    - dependencies
